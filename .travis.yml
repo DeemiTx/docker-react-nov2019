@@ -7,3 +7,15 @@ before_install:
 
 script:
   - docker run -e CI=true nafzaltx/docker-react-nov2019 npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "dockerReactNov2019"
+  env: "Dockerreactnov2019-env"
+  bucket_name: "elasticbeanstalk-us-east-2-150460661407"
+  bucket_path: "dockerReactNov2019"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
